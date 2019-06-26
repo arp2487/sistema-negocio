@@ -13,7 +13,6 @@ public class main {
 		ProductoControlador pc = new ProductoControlador();
 		CompraControlador cc = new CompraControlador();
 		ClienteControlador clc = new ClienteControlador();
-		
 		clc.abm(cc);
 	}
 

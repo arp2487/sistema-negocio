@@ -129,7 +129,7 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 		return 0;
 	}
 	public void Guardar(ArrayList<Cliente> lista) {
-		String clase = lista.get(0).getNombreClase();
+		String clase = "cliente";
 		File file = new File(Configuracion.getProperty(clase));
 		
 		try {
@@ -196,7 +196,9 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 		ArrayList<Cliente> lista = cargar();
 		for(int i = 0; i < lista.size(); i++) {
 			if(lista.get(i).getNombre().equals(nombre) == true) {
-				lista.get(i).getCompras().add(compra);
+				ArrayList<Compra> listacompras = lista.get(i).getCompras();
+				listacompras.add(compra);
+				lista.get(i).setCompras(listacompras);
 				Guardar(lista);
 				return true;
 				

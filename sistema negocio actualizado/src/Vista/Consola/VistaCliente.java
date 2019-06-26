@@ -3,6 +3,7 @@ package Vista.Consola;
 import java.util.ArrayList;
 
 import DAO.Dominio.Cliente;
+import DAO.Dominio.Compra;
 import util.IOGeneral;
 
 public class VistaCliente {
@@ -19,6 +20,7 @@ public int menuprincipal() {
 	}
 	public Cliente leercliente() {
 		Cliente cliente = new Cliente();
+		
 		cliente.setNombre(IOGeneral.leerFrase("ingresar nombre de cliente"));
 		return cliente;
 	}
@@ -44,6 +46,7 @@ public int menuprincipal() {
 		VistaCompra vc = new VistaCompra();
 		IOGeneral.pritln("nombre: "+cliente.getNombre());
 		IOGeneral.pritln("cuenta: "+cliente.getCuenta());
+		ArrayList<Compra> lista = cliente.getCompras();
 		vc.imprimirtodos(cliente.getCompras());
 	}
 //getall

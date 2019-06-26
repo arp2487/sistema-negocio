@@ -107,7 +107,7 @@ public class Cliente implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public Cliente(){
+		this.compras = new ArrayList(); 
 	}
 }

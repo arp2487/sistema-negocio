@@ -10,6 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import DAO.Dominio.Compra;
+import DAO.Dominio.Fecha;
 import DAO.Dominio.Producto;
 import DAO.Factory.FactoryProducto;
 import DAO.Interfaces.CompraDAO;
@@ -29,18 +30,15 @@ public class CompraDAOimplArchivo implements CompraDAO {
 				
 			}
 		}
-		compra.setIdcompra(idmaximo + 1);
 		Producto p = pd.consulta(nombreproducto, marcaProducto);
-		if(p != null) {
-			compra.setProducto(p);
-			lista.add(compra);
-			Guardar(lista);
-			return compra;
-		}else {
-			return null;
-		}
-		
-		
+		Fecha fecha = new Fecha();
+		fecha.setFecha();
+		compra.setFecha(fecha.getFecha());
+		compra.setIdcompra(idmaximo+1);
+		compra.setProducto(p);
+		lista.add(compra);
+		Guardar(lista);
+		return compra;
 	}
 
 	public boolean baja(int idCompra) {

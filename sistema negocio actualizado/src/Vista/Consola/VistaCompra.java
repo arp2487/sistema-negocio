@@ -55,7 +55,10 @@ public class VistaCompra {
 		public void imprimir(Compra compra) {
 			IOGeneral.pritln("producto: "+compra.getProducto().getNombre()+" marca "+
 						compra.getProducto().getMarca().getNombre());
-			IOGeneral.pritln(compra.getFecha().toString());
+			int dia = compra.getFecha().getDia();
+			int mes = compra.getFecha().getMes();
+			int año = compra.getFecha().getAño();
+			IOGeneral.pritln(dia+"/"+mes+"/"+año);
 		}
 		public void noencotrado(int id) {
 			IOGeneral.pritln("no se encontro compra con id "+id);

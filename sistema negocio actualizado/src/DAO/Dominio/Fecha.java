@@ -1,9 +1,10 @@
 package DAO.Dominio;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 
-public class Fecha {
+public class Fecha implements Serializable{
 		public int dia;
 		public int mes;
 		public int año;
