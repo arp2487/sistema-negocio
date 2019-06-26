@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import DAO.Dominio.Cliente;
 import DAO.Dominio.Compra;
 import DAO.Dominio.Producto;
+import DAO.Factory.FactoryCompra;
 import DAO.Interfaces.ClienteDAO;
+import DAO.Interfaces.CompraDAO;
 import util.Configuracion;
 
 public class ClienteDAOimplArchivo implements ClienteDAO {
@@ -20,7 +22,13 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 	
 	public void alta(Cliente cliente) {
 		ArrayList<Cliente> lista = cargar();
-
+		int idmaximo = 0;
+		for(int i = 0; i < lista.size(); i++) {
+			if(lista.get(i).getIdCliente() > idmaximo) {
+				idmaximo = lista.get(i).getIdCliente();
+			}
+		}
+		cliente.setIdCliente(idmaximo + 1);
 		lista.add(cliente);
 		
 		Guardar(lista);
@@ -80,8 +88,9 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 					cuenta = cuenta + lista.get(i).getCompras().get(j).getProducto()
 							.getPrecioVenta();
 				}
-				
-				cuenta = cuenta + (cuenta * (porcentajeInteres / 100));
+				float porcentaje = (float) porcentajeInteres / 100;
+				float interes = (float) cuenta * porcentaje;
+				cuenta = (float) cuenta +interes;
 				lista.get(i).setCuenta(cuenta);
 				
 				Guardar(lista);
@@ -187,7 +196,6 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 		ArrayList<Cliente> lista = cargar();
 		for(int i = 0; i < lista.size(); i++) {
 			if(lista.get(i).getNombre().equals(nombre) == true) {
-
 				lista.get(i).getCompras().add(compra);
 				Guardar(lista);
 				return true;

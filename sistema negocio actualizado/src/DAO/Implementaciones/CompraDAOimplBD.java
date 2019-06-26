@@ -8,9 +8,9 @@ import DAO.Interfaces.CompraDAO;
 public class CompraDAOimplBD implements CompraDAO {
 
 	@Override
-	public boolean alta(String nombreproducto, String marcaproducto, Compra compra) {
+	public Compra alta(String nombreproducto, String marcaproducto, Compra compra) {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
 	}
 
 	@Override

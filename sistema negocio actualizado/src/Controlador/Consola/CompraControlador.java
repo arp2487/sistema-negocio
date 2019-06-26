@@ -1,5 +1,6 @@
 package Controlador.Consola;
 
+import DAO.Dominio.Compra;
 import DAO.Factory.FactoryCompra;
 import DAO.Interfaces.CompraDAO;
 import Vista.Consola.VistaCompra;
@@ -20,16 +21,12 @@ public class CompraControlador {
 		this.vista = vista;
 	}
 	
-	public void alta(ProductoControlador pc) {
-		int op = vista.menualta();
-		while(op == 1) {
+	public Compra alta() {
 			String nombreproducto = vista.leernombreproducto();
 			String marcaproducto = vista.leermarcaproducto();
-			boolean ok =  modelo.alta(nombreproducto, marcaproducto, vista.crearcompra());
-			vista.altaok(nombreproducto, marcaproducto, ok);
-			
-			op = vista.menualta();
-		}
+			Compra compra =  modelo.alta(nombreproducto, marcaproducto, vista.crearcompra());
+
+			return compra;
 	}
 	public void baja() {
 		int op = vista.menubaja();
@@ -62,7 +59,7 @@ public class CompraControlador {
 		int op = vista.menuprincipal();
 		while(op != 5) {
 			if(op == 1) {
-				alta(pc);
+				alta();
 			}
 			if(op == 2) {
 				baja();

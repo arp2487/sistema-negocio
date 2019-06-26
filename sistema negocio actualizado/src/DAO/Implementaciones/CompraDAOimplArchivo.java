@@ -19,11 +19,10 @@ import util.Configuracion;
 public class CompraDAOimplArchivo implements CompraDAO {
 
 	
-	public boolean alta(String nombreproducto, String marcaProducto, Compra compra) {
+	public Compra alta(String nombreproducto, String marcaProducto, Compra compra) {
 		ArrayList<Compra> lista = cargar();
 		ProductoDAO pd = FactoryProducto.getDAO("archivo");
 		int idmaximo = 0;
-		boolean ok = false;
 		for(int i = 0; i < lista.size(); i++) {
 			if(lista.get(i).getIdcompra() > idmaximo) {
 				idmaximo = lista.get(i).getIdcompra();
@@ -36,9 +35,9 @@ public class CompraDAOimplArchivo implements CompraDAO {
 			compra.setProducto(p);
 			lista.add(compra);
 			Guardar(lista);
-			return true;
+			return compra;
 		}else {
-			return false;
+			return null;
 		}
 		
 		
