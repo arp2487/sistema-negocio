@@ -129,5 +129,17 @@ public class ProductoDAOimplBD implements ProductoDAO {
 		return false;
 	}
 
+	@Override
+	public void alta(Producto producto, int idmarca, int idtipo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean modificarprecio(String nombre, String marca, float precioventa) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }

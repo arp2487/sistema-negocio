@@ -21,8 +21,9 @@ public class CompraControlador {
 		this.vista = vista;
 	}
 	
-	public Compra alta() {
+	public Compra alta(MarcaControlador mc) {
 			String nombreproducto = vista.leernombreproducto();
+			mc.getall();
 			String marcaproducto = vista.leermarcaproducto();
 			Compra compra =  modelo.alta(nombreproducto, marcaproducto, vista.crearcompra());
 
@@ -55,11 +56,11 @@ public class CompraControlador {
 		}
 	}
 	
-	public void abc(ProductoControlador pc) {
+	public void abc(ProductoControlador pc,MarcaControlador mc) {
 		int op = vista.menuprincipal();
 		while(op != 5) {
 			if(op == 1) {
-				alta();
+				alta(mc);
 			}
 			if(op == 2) {
 				baja();

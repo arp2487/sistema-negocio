@@ -21,7 +21,8 @@ public class VistaProducto {
 	
 	public int menutipodealta() {
 		return IOGeneral.leerInt("1) calcular precio por porcentaje\n"
-				+"2) calcular precio pasando ganancia", "ingresar valor valido");
+				+"2) calcular precio pasando ganancia\n"
+				+ "3) ingresar precios de venta directo", "ingresar valor valido");
 	}
 	public float leerganancia() {
 		return IOGeneral.leerInt("ingresar ganancia ", "ingresar valor valido");
@@ -55,7 +56,18 @@ public class VistaProducto {
 		
 		return producto;
 	}
-	
+	public Producto altaProductoCPrecioVenta() {
+		
+		Producto producto = new Producto();
+		producto.setNombre(IOGeneral.leerFrase("ingresar nombre "));
+		producto.setTamaño(IOGeneral.leerFrase("ingresar tamaño"));
+		producto.setPrecioCompra(0);
+		producto.setPrecioVenta(IOGeneral.leerFloat("ingresar precio de venta", "iingresar valor valido"));
+		producto.setMarca(null);
+		producto.setTipo(null);
+		
+		return producto;
+	}
 //baja
 	public int menubaja() {
 		return IOGeneral.leerInt("1) eliminar producto\n"+"2) salir", "ingresar valor valido");
@@ -100,9 +112,12 @@ public class VistaProducto {
 		public int menumodprecio() {
 			return IOGeneral.leerInt("1) modificar precio venta con ganancia establecida\n"
 					+ "2) modificar precio venta con porcentaje de ganancia\n"
-					+ "3) salir", "ingresar valor valido");
+					+ "3) modificar precio venta directo"
+					+ "4) salir", "ingresar valor valido");
 		}
-		
+		public float leerPrecioVentaNuevo() {
+			return IOGeneral.leerFloat("ingresar nuevo precio de venta: ", "ingresar valor valido");
+		}
 		public float leerpreciodecompranuevo() {
 			return IOGeneral.leerFloat("ingresar precio de compra nuevo: ", "ingresar valor valido");
 		}

@@ -21,7 +21,7 @@ public class GeneralControl {
 				pc.abmc(tc, mc);
 			}
 			if(op ==2) {
-				cc.abm(cxc);
+				cc.abm(cxc,mc);
 			}
 			if(op ==3) {
 				mc.abm();
@@ -30,7 +30,7 @@ public class GeneralControl {
 				tc.abm();
 			}
 			if(op == 27) {
-				cxc.abc(pc);
+				cxc.abc(pc, mc);
 			}
 			op = vista.PresentarMenuGeneral();
 		}

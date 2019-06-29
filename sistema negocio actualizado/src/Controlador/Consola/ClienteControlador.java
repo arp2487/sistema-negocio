@@ -95,16 +95,16 @@ public class ClienteControlador {
 		}
 	}
 	
-	public void añadircompra(CompraControlador cc) {
+	public void añadircompra(CompraControlador cc, MarcaControlador mc) {
 		int op = vista.menuañadir();
 		while(op == 1) {
 			String nombre = vista.leecliente();
-			boolean ok = modelo.añadircompra(nombre, cc.alta());
+			boolean ok = modelo.añadircompra(nombre, cc.alta(mc));
 			vista.añadirok(ok);
 			op = vista.menuañadir();
 		}
 	}
-	public void abm(CompraControlador cc) {
+	public void abm(CompraControlador cc,MarcaControlador mc) {
 		int op = vista.menuprincipal();
 		while(op != 10) {
 			if(op == 1) {
@@ -132,7 +132,7 @@ public class ClienteControlador {
 				pagototal();
 			}
 			if(op == 9) {
-				añadircompra(cc);
+				añadircompra(cc,mc);
 			}
 			op = vista.menuprincipal();
 		}

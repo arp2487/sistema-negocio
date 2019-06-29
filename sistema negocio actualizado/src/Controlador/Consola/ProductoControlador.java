@@ -39,6 +39,12 @@ public class ProductoControlador {
 				
 				modelo.alta(vista.altaProducto(), vista.leerganancia(), vista.elegirmarca(), vista.elegirtipo());
 			}
+			if(opseteoprecio == 3) {
+				mc.getall();
+				tc.getall();
+				
+				modelo.alta(vista.altaProductoCPrecioVenta(), vista.elegirmarca(), vista.elegirtipo());
+			}
 			op = vista.menualta();
 		}
 	}
@@ -170,6 +176,14 @@ public class ProductoControlador {
 							float preciocompra = vista.leerpreciodecompranuevo();
 							int porcentaje = vista.leerporcentaje();
 							boolean ok = modelo.modificarprecio(nombre, marca,preciocompra, porcentaje);
+							vista.modpreciook(nombre, ok);
+						}
+						if(opmodpreciotipo == 3) {
+							String nombre = vista.leernombre();
+							mc.getall();
+							String marca = vista.leermarcanombre();
+							float precioventanuevo = vista.leerPrecioVentaNuevo();
+							boolean ok = modelo.modificarprecio(nombre, marca,precioventanuevo);
 							vista.modpreciook(nombre, ok);
 						}
 						opmodpreciotipo = vista.menumodprecio();

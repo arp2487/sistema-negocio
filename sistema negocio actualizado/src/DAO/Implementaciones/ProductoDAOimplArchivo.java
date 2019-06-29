@@ -452,5 +452,41 @@ public class ProductoDAOimplArchivo implements ProductoDAO {
 		}
 	}
 
+	@Override
+	public void alta(Producto producto, int idmarca, int idtipo) {
+		ArrayList<Producto> lista = cargar();
+		int idmaximo = 0;
+		for(int i = 0; i < lista.size(); i++) {
+			if(lista.get(i).getIdProducto() > idmaximo) {
+				idmaximo = lista.get(i).getIdProducto();
+			}
+		}
+		producto.setIdProducto(idmaximo + 1);
+		TipoDAO td = FactoryTipo.getDAO("archivo");
+		MarcaDAO md = FactoryMarca.getDAO("archivo");
+		
+		producto.setMarca(md.consulta(md.buscar(idmarca)));
+		producto.setTipo(td.consulta(td.buscar(idtipo)));
+		lista.add(producto);
+		
+		Guardar(lista);
+	}
+
+	@Override
+	public boolean modificarprecio(String nombre, String marca, float precioventa) {
+		ArrayList<Producto> lista = cargar();
+		
+		for(int i = 0; i < lista.size(); i++) {
+			if(lista.get(i).getNombre().equals(nombre) == true) {
+				if(lista.get(i).getMarca().getNombre().equals(marca) == true) {
+					lista.get(i).setPrecioVenta(precioventa);
+					Guardar(lista);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	
 }
