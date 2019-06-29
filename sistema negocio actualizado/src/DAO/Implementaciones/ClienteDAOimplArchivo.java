@@ -104,7 +104,9 @@ public class ClienteDAOimplArchivo implements ClienteDAO {
 		ArrayList<Cliente> lista = cargar();
 		for(int i = 0; i < lista.size(); i++) {
 			if(lista.get(i).getNombre().equals(nombre) == true) {
-
+				ArrayList<Compra> compras = new ArrayList();
+				compras.add(null);
+				lista.get(i).setCompras(compras);
 				lista.get(i).setCuenta(0);
 				Guardar(lista);
 				return true;

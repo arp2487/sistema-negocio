@@ -1,5 +1,6 @@
 import Controlador.Consola.ClienteControlador;
 import Controlador.Consola.CompraControlador;
+import Controlador.Consola.GeneralControl;
 import Controlador.Consola.MarcaControlador;
 import Controlador.Consola.ProductoControlador;
 import Controlador.Consola.Tipocontrolador;
@@ -13,7 +14,10 @@ public class main {
 		ProductoControlador pc = new ProductoControlador();
 		CompraControlador cc = new CompraControlador();
 		ClienteControlador clc = new ClienteControlador();
-		clc.abm(cc);
+		GeneralControl gc = new GeneralControl();
+		
+		
+		gc.abmcGeneral(pc, clc, tc, mc, cc);
 	}
 
 }

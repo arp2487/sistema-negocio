@@ -54,9 +54,12 @@ public int menuprincipal() {
 		return IOGeneral.leerInt("1) mostrar todos\n"+"2) salir", "ingresar valor valido");
 	}
 	public void imprimirtodos(ArrayList<Cliente> lista) {
-		
-		for(int i = 0; i < lista.size(); i++) {
-			imprimir(lista.get(i));
+		if(lista.size() > 0 ) {
+			for(int i = 0; i < lista.size(); i++) {
+				imprimir(lista.get(i));
+			}
+		}else {
+			IOGeneral.pritln("lista de clientes vacia");
 		}
 	}
 //modificar nombre
